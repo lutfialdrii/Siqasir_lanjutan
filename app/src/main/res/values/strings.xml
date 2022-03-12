@@ -11,4 +11,8 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_developer">Developer</string>
+    <string name="perintah">Silahkan Login!</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="create">Belum memiliki akun? Buat Akun</string>
 </resources>

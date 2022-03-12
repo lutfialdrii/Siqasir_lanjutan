@@ -2,5 +2,64 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <RelativeLayout
+        android:background="@drawable/sign_in"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="100dp"
+            android:background="@drawable/logotext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tvPerintah"
+            android:textAlignment="center"
+            android:layout_below="@id/ivLogo"
+            android:layout_marginTop="20dp"
+            android:text="@string/perintah"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/etUsername"
+            android:inputType="text"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvPerintah"
+            android:layout_centerHorizontal="true"
+            android:drawableStart="@drawable/ic_baseline_person_24"
+            android:hint="@string/username" />
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/etUsername"
+            android:drawableStart="@drawable/ic_baseline_lock_24"
+            android:inputType="textPassword"
+            android:hint="@string/password"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/etPassword"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/btn_sign_in" />
+
+        <TextView
+            android:id="@+id/tvCreateAccount"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnLogin"
+            android:text="@string/create"
+            android:textAlignment="center" />
+    </RelativeLayout>
 
 </LinearLayout>

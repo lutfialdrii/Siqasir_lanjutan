@@ -3,6 +3,8 @@ package com.example.siqasir_lanjutan.activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.siqasir_lanjutan.R;
 import com.google.android.material.snackbar.Snackbar;
@@ -29,6 +31,12 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        //menerima data dari putExtra
+        String successLogin = getIntent().getStringExtra("USERNAME");
+
+
+
+
         setSupportActionBar(binding.appBarMain.toolbar);
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +47,13 @@ public class MainActivity extends AppCompatActivity {
         });
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
+
+        //tidak bisa langsung menampilkan, karena nav_header di include kan ke Main Activity
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.tvUsername);
+        navUsername.setText(""+successLogin);
+        Toast.makeText(getApplicationContext(),"welcome"+successLogin,Toast.LENGTH_SHORT).show();
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
