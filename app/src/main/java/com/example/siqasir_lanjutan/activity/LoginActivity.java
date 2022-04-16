@@ -2,6 +2,9 @@ package com.example.siqasir_lanjutan.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -31,6 +34,20 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "salah Password", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu) {
+        getMenuInflater().inflate(R.menu.main,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if (item.getItemId()==R.id.action_settings){
+            Intent nintent = new Intent(Settings.ACTION_LOCALE_SETTINGS);
+            startActivity(nintent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void login_sukses() {
