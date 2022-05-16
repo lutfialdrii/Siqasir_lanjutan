@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,7 @@ public class LoginActivity extends AppCompatActivity {
 
     ImageButton login;
     EditText username, password;
+    TextView create;
 
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
@@ -26,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
         login = (ImageButton) findViewById(R.id.btnLogin);
         username = (EditText) findViewById(R.id.etUsername);
         password = (EditText) findViewById(R.id.etPassword);
+        create = (TextView) findViewById(R.id.tvCreateAccount);
 
         login.setOnClickListener(view -> {
             if (password.getText().toString().equalsIgnoreCase("1234")) {
@@ -33,6 +36,10 @@ public class LoginActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(getApplicationContext(), "salah Password", Toast.LENGTH_SHORT).show();
             }
+        });
+        create.setOnClickListener(view -> {
+            Intent i = new Intent(this,RegisterActivity.class);
+            startActivity(i);
         });
     }
     @Override
@@ -58,4 +65,3 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 }
-

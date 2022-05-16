@@ -15,4 +15,12 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="create">Not Have Account? Create Account!</string>
+    <string name="or">Or</string>
+    <string name="hint_username">Username</string>
+    <string name="etemail">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="etphone_number">Phone Number</string>
+    <string name="etnamalengkap">Nama Lengkap</string>
+    <string name="have_account">Have account?</string>
+    <string name="tvsign_in2">Sign in</string>
 </resources>
