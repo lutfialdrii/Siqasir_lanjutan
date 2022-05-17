@@ -16,4 +16,13 @@
     <string name="username">Username</string>
     <string name="password">Kata Sandi</string>
     <string name="create">Belum Punya Akun? Create Akun</string>
+    <string name="or">Atau</string>
+    <string name="hint_username">Username</string>
+    <string name="etemail">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="etphone_number">Phone Number</string>
+    <string name="etnamalengkap">Nama Lengkap</string>
+    <string name="have_account">Sudah Mempunyai akun?</string>
+    <string name="tvsign_in2">Sign in</string>
+    <string name="action_logout">Keluar</string>
 </resources>

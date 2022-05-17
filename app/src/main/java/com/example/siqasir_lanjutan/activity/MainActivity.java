@@ -1,15 +1,21 @@
 package com.example.siqasir_lanjutan.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.siqasir_lanjutan.R;
+import com.example.siqasir_lanjutan.utils.SessionManager;
+import com.facebook.stetho.Stetho;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -21,6 +27,7 @@ import com.example.siqasir_lanjutan.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
+    SessionManager sessionManager;
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
 
@@ -31,13 +38,18 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        //menerima data dari putExtra
-        String successLogin = getIntent().getStringExtra("USERNAME");
+//        //menerima data dari putExtra
+//        String successLogin = getIntent().getStringExtra("USERNAME");
+//        setSupportActionBar(binding.appBarMain.toolbar);
 
-
-
-
-        setSupportActionBar(binding.appBarMain.toolbar);
+        Stetho.initializeWithDefaults(this);
+        sessionManager = new SessionManager(this);
+        if (!sessionManager.isLogginIN()) {
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_HISTORY);
+            startActivity(intent);
+            finish();
+        }
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,10 +61,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationView navigationView = binding.navView;
 
         //tidak bisa langsung menampilkan, karena nav_header di include kan ke Main Activity
-        View headerView = navigationView.getHeaderView(0);
-        TextView navUsername = (TextView) headerView.findViewById(R.id.tvUsername);
-        navUsername.setText(""+successLogin);
-        Toast.makeText(getApplicationContext(),"welcome"+successLogin,Toast.LENGTH_SHORT).show();
+//        navUsername.setText(""+successLogin);
+//        Toast.makeText(getApplicationContext(),"welcome"+successLogin,Toast.LENGTH_SHORT).show();
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -70,6 +80,21 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if (item.getItemId()==R.id.action_settings){
+            Intent nintent = new Intent(Settings.ACTION_LOCALE_SETTINGS);
+            startActivity(nintent);
+        }
+        else if (item.getItemId()==R.id.action_logout){
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_HISTORY);
+            startActivity(intent);
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
